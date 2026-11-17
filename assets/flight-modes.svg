@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 470" width="1200" height="470" role="img" aria-labelledby="modesTitle modesDesc">
+  <title id="modesTitle">Flight modes: hover, transition and forward flight</title>
+  <desc id="modesDesc">Three panels showing the same tail-sitting flying wing in vertical hover, mid-transition and forward flight, with the control behaviour of each mode.</desc>
+  <defs>
+    <style>
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; }
+      .title { font-family: Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 21px; font-weight: 800; fill: #0f172a; letter-spacing: 0.5px; }
+      .sub { font-family: Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 600; fill: #2563eb; letter-spacing: 0.6px; }
+      .body { font-family: Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; fill: #475569; }
+      .note { font-family: Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; fill: #475569; }
+      .h1 { font-family: Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 28px; font-weight: 800; fill: #0f172a; }
+    </style>
+    <linearGradient id="wing" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a3a52"/>
+      <stop offset="1" stop-color="#111a29"/>
+    </linearGradient>
+    <g id="craft">
+      <!-- Nose up. Motors on the leading edge (front), elevons on the trailing edge (rear). -->
+      <path d="M0 -120 L-110 42 L-70 72 L0 60 L70 72 L110 42 Z" fill="url(#wing)" stroke="#3d5069" stroke-width="2"/>
+      <path d="M-18 -88 L18 -88 L24 58 L-24 58 Z" fill="#0b1220" stroke="#334155" stroke-width="1.5"/>
+      <ellipse cx="0" cy="-60" rx="9" ry="16" fill="#0ea5e9" opacity="0.55"/>
+      <path d="M-104 46 L-72 70 L-56 64 L-90 42 Z" fill="#fb923c"/>
+      <path d="M104 46 L72 70 L56 64 L90 42 Z" fill="#fb923c"/>
+      <g stroke="#38bdf8" stroke-width="2.5" fill="none" opacity="0.9">
+        <circle cx="-62" cy="-48" r="25" stroke-dasharray="3 6"/>
+        <circle cx="62" cy="-48" r="25" stroke-dasharray="3 6"/>
+        <path d="M-62 -73 V-23 M-87 -48 H-37 M-79 -65 L-45 -31 M-45 -65 L-79 -31"/>
+        <path d="M62 -73 V-23 M37 -48 H87 M45 -65 L79 -31 M79 -65 L45 -31"/>
+      </g>
+      <circle cx="-62" cy="-48" r="4" fill="#e2e8f0"/>
+      <circle cx="62" cy="-48" r="4" fill="#e2e8f0"/>
+    </g>
+    <marker id="arcArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="470" fill="#f8fafc"/>
+  <text x="40" y="52" class="h1">Flight modes</text>
+  <text x="40" y="78" class="note">One airframe, two flight regimes, blended by the transition variable τ (tau).</text>
+
+  <!-- HOVER -->
+  <rect x="40" y="104" width="350" height="300" rx="18" class="panel"/>
+  <text x="215" y="138" class="title" text-anchor="middle">HOVER</text>
+  <text x="215" y="160" class="sub" text-anchor="middle">CH6 LOW · τ = 0</text>
+  <g transform="translate(215 278) scale(0.82)">
+    <use href="#craft"/>
+  </g>
+  <text x="215" y="352" class="body" text-anchor="middle">Self-levelling vertical flight</text>
+  <text x="215" y="372" class="body" text-anchor="middle">Elevons + differential thrust</text>
+  <text x="215" y="392" class="body" text-anchor="middle">Heading hold</text>
+
+  <!-- TRANSITION -->
+  <rect x="425" y="104" width="350" height="300" rx="18" class="panel"/>
+  <text x="600" y="138" class="title" text-anchor="middle">TRANSITION</text>
+  <text x="600" y="160" class="sub" text-anchor="middle">CH6 HIGH · τ 0 → 1</text>
+  <g transform="translate(600 250) rotate(45) scale(0.82)">
+    <use href="#craft"/>
+  </g>
+  <path d="M500 186 Q600 156 700 186" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 6" marker-end="url(#arcArrow)"/>
+  <text x="600" y="352" class="body" text-anchor="middle">Nose pitches down over 2.0 s</text>
+  <text x="600" y="372" class="body" text-anchor="middle">Throttle floor 0.65</text>
+  <text x="600" y="392" class="body" text-anchor="middle">Starts after a 0.5 s throttle hold</text>
+
+  <!-- FORWARD -->
+  <rect x="810" y="104" width="350" height="300" rx="18" class="panel"/>
+  <text x="985" y="138" class="title" text-anchor="middle">FORWARD</text>
+  <text x="985" y="160" class="sub" text-anchor="middle">CH6 HIGH · τ = 1</text>
+  <g transform="translate(985 258) rotate(90) scale(0.74)">
+    <use href="#craft"/>
+  </g>
+  <text x="985" y="352" class="body" text-anchor="middle">Angle-mode wing flight</text>
+  <text x="985" y="372" class="body" text-anchor="middle">Bank, pitch, diff-thrust yaw</text>
+  <text x="985" y="392" class="body" text-anchor="middle">No heading hold</text>
+
+  <text x="40" y="444" class="note">Tractor motors on the leading edge, elevons on the trailing edge. τ blends the target attitude, stick mapping and PID gains; the transition back to hover takes 1.5 s.</text>
+</svg>

@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-labelledby="calTitle calDesc">
+  <title id="calTitle">Two-pose mount calibration</title>
+  <desc id="calDesc">Step one holds the aircraft flat on its belly; step two stands it on its tail with the nose up. The mount matrix and gyro bias are saved to NVS and reused on later boots.</desc>
+  <defs>
+    <style>
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; }
+      .title { font-family: Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 28px; font-weight: 800; fill: #0f172a; }
+      .sub { font-family: Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 14px; fill: #475569; }
+      .h { font-family: Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 800; fill: #0f172a; }
+      .tag { font-family: Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 1px; }
+      .t { font-family: Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; fill: #475569; }
+      .mono { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12.5px; fill: #334155; }
+      .warn { font-family: Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; fill: #7c2d12; }
+    </style>
+    <linearGradient id="wing" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a3a52"/>
+      <stop offset="1" stop-color="#111a29"/>
+    </linearGradient>
+    <marker id="ax" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="ay" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#16a34a"/>
+    </marker>
+    <g id="topview">
+      <!-- Nose up. Tractor motors on the leading edge, elevons on the trailing edge. -->
+      <path d="M0 -120 L-110 42 L-70 72 L0 60 L70 72 L110 42 Z" fill="url(#wing)" stroke="#3d5069" stroke-width="2"/>
+      <path d="M-18 -88 L18 -88 L24 58 L-24 58 Z" fill="#0b1220" stroke="#334155" stroke-width="1.5"/>
+      <path d="M-104 46 L-72 70 L-56 64 L-90 42 Z" fill="#fb923c"/>
+      <path d="M104 46 L72 70 L56 64 L90 42 Z" fill="#fb923c"/>
+      <g stroke="#38bdf8" stroke-width="2.5" fill="none" opacity="0.9">
+        <circle cx="-62" cy="-48" r="24" stroke-dasharray="3 6"/>
+        <circle cx="62" cy="-48" r="24" stroke-dasharray="3 6"/>
+        <path d="M-62 -72 V-24 M-86 -48 H-38 M-78 -64 L-46 -32 M-46 -64 L-78 -32"/>
+        <path d="M62 -72 V-24 M38 -48 H86 M46 -64 L78 -32 M78 -64 L46 -32"/>
+      </g>
+      <circle cx="-62" cy="-48" r="4" fill="#e2e8f0"/>
+      <circle cx="62" cy="-48" r="4" fill="#e2e8f0"/>
+    </g>
+  </defs>
+
+  <rect width="1200" height="560" fill="#f8fafc"/>
+  <text x="40" y="52" class="title">Two-pose mount calibration</text>
+  <text x="40" y="80" class="sub">The board can be mounted in any orientation. Two known poses learn the sensor-to-body rotation and the gyro bias.</text>
+
+  <!-- Step 1 -->
+  <rect x="40" y="110" width="340" height="340" rx="18" class="panel"/>
+  <text x="60" y="144" class="tag" fill="#0891b2">STEP 1 · FLAT</text>
+  <text x="210" y="178" class="h" text-anchor="middle">Belly down, wings level</text>
+  <ellipse cx="210" cy="362" rx="146" ry="36" fill="#e2e8f0"/>
+  <g transform="translate(210 300) scale(0.88)">
+    <use href="#topview"/>
+  </g>
+  <circle cx="280" cy="140" r="7" fill="#22d3ee"/>
+  <text x="294" y="144" class="t">CYAN</text>
+  <text x="210" y="408" class="t" text-anchor="middle">Hold still for 1.5 s</text>
+  <text x="210" y="428" class="t" text-anchor="middle">Nose forward · wings level</text>
+
+  <!-- Step 2 -->
+  <rect x="430" y="110" width="340" height="340" rx="18" class="panel"/>
+  <text x="450" y="144" class="tag" fill="#a21caf">STEP 2 · VERTICAL</text>
+  <text x="600" y="178" class="h" text-anchor="middle">On its tail, nose up</text>
+  <line x1="600" y1="196" x2="600" y2="388" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 6"/>
+  <!-- Side view: nose up, tractor prop near the top, elevons at the bottom. -->
+  <path d="M600 214 L568 372 L590 366 L600 378 L610 366 L632 372 Z" fill="url(#wing)" stroke="#3d5069" stroke-width="2"/>
+  <path d="M572 368 L592 362 L608 362 L628 368 L624 378 L600 374 L576 378 Z" fill="#fb923c"/>
+  <g stroke="#38bdf8" stroke-width="2.5" fill="none" opacity="0.9">
+    <circle cx="600" cy="248" r="22" stroke-dasharray="3 6"/>
+    <path d="M600 226 V270 M578 248 H622 M585 233 L615 263 M615 233 L585 263"/>
+  </g>
+  <circle cx="600" cy="248" r="4" fill="#e2e8f0"/>
+  <path d="M582 378 V390 M618 378 V390 M574 390 H592 M608 390 H626" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+  <path d="M600 214 L600 198" stroke="#2563eb" stroke-width="2.5" marker-end="url(#ax)"/>
+  <text x="612" y="206" class="t" fill="#2563eb">X nose</text>
+  <circle cx="670" cy="140" r="7" fill="#e879f9"/>
+  <text x="684" y="144" class="t">MAGENTA</text>
+  <text x="600" y="410" class="t" text-anchor="middle">Hold still for 1.5 s</text>
+  <text x="600" y="428" class="t" text-anchor="middle">Nose straight up · wings vertical</text>
+
+  <!-- Save to NVS -->
+  <rect x="820" y="110" width="340" height="340" rx="18" class="panel"/>
+  <text x="840" y="144" class="tag" fill="#15803d">SAVED TO NVS</text>
+  <text x="990" y="178" class="h" text-anchor="middle">Reused on every boot</text>
+
+  <rect x="884" y="196" width="212" height="118" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="990" y="238" fill="#7dd3fc" font-family="'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="700" text-anchor="middle">NVS</text>
+  <text x="990" y="262" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11" text-anchor="middle">tailcal / cal</text>
+  <text x="990" y="288" fill="#86efac" font-family="Inter, sans-serif" font-size="12" font-weight="700" text-anchor="middle">CRC ✓</text>
+
+  <text x="850" y="346" class="mono">mount matrix (3×3)</text>
+  <text x="850" y="366" class="mono">gyro bias (3)</text>
+  <text x="850" y="386" class="mono">magic + version + CRC</text>
+  <text x="850" y="412" class="t">Later boots: load, then initialise</text>
+  <text x="850" y="430" class="t">attitude from gravity.</text>
+
+  <path d="M780 280 H816" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#ax)"/>
+  <text x="786" y="270" class="t">save</text>
+
+  <!-- warning -->
+  <rect x="40" y="468" width="1120" height="64" rx="12" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+  <text x="60" y="492" class="warn">The two poses cannot tell nose-up from nose-down. Always stand the aircraft on its tail with the nose pointing up.</text>
+  <text x="60" y="514" class="warn">Recalibrate after changing the IMU, its mount, or the airframe.</text>
+
+  <text x="40" y="552" class="t" font-size="12">Body frame: X = nose · Y = right wing · Z = belly (down). The mount matrix maps sensor axes to this body frame.</text>
+</svg>
